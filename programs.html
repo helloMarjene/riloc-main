@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programs — RILOC</title>
+<meta name="description" content="Explore all 27 RILOC programs across community development, education, workforce readiness, health, advocacy, and partnerships.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.program-card{cursor:pointer;}
+#programModal{position:fixed;inset:0;background:rgba(10,20,30,.75);z-index:2100;display:none;align-items:center;justify-content:center;padding:24px;}
+#programModal.open{display:flex;}
+.pm-panel{background:#fff;border-radius:var(--radius-lg);max-width:760px;width:100%;max-height:88vh;overflow:auto;position:relative;}
+.pm-panel .pm-img{width:100%;height:280px;object-fit:cover;border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+.pm-panel .pm-body{padding:36px 40px 40px;}
+.pm-close{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.9);border:none;font-size:1rem;cursor:pointer;z-index:2;}
+</style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav class="riloc-nav nav-transparent-allowed" aria-label="Primary navigation">
+  <div class="container-xl">
+    <a href="index.html" class="brand" style="gap:14px;">
+      <img src="riloc-logo.png" alt="RILOC" class="brand-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <span class="mark" style="display:none;"><i class="fa-solid fa-hands-holding-child"></i></span>
+      RILOC
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><span class="nav-link-text">About <i class="fa-solid fa-chevron-down dropdown-arrow"></i></span><div class="dropdown-menu"><a href="about.html">Our Story</a><a href="about.html#mission-vision">Mission &amp; Vision</a><a href="about.html#values">Core Values</a><a href="about.html#leadership">Leadership</a><a href="about.html#timeline">Our Journey</a></div></li>
+      <li><span class="nav-link-text">Programs <i class="fa-solid fa-chevron-down dropdown-arrow"></i></span><div class="dropdown-menu"><div class="dropdown-header">By Category</div><a href="programs.html#community-development">Community Development</a><a href="programs.html#youth-education">Youth &amp; Education</a><a href="programs.html#workforce-development">Workforce Development</a><a href="programs.html#health-wellness">Health &amp; Wellness</a><a href="programs.html#civic-advocacy">Civic &amp; Advocacy</a><div class="dropdown-divider"></div><a href="programs.html">View All Programs</a></div></li>
+      <li><a href="departments.html">Departments</a></li>
+      <li><a href="impact.html">Impact</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><span class="nav-link-text">Get Involved <i class="fa-solid fa-chevron-down dropdown-arrow"></i></span><div class="dropdown-menu"><a href="pages/volunteer.html">Volunteer</a><a href="pages/partners.html">Partner With Us</a><a href="pages/contact.html#donate">Donate</a><a href="pages/contact.html">Contact Us</a></div></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="lang-pill" aria-label="Choose language">EN <i class="fa-solid fa-chevron-down" style="font-size:.6rem;margin-left:4px;"></i></button>
+      <a href="contact.html#donate" class="btn btn-primary btn-sm">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="page-hero" style="background-image:linear-gradient(120deg, rgba(15,61,99,.85), rgba(15,61,99,.7)), url('https://images.unsplash.com/photo-1531379410502-63bfe8cdaf6f?q=80&w=2000&auto=format&fit=crop');">
+  <div class="container-xl">
+    <span class="breadcrumb-pill"><a href="../index.html" style="color:#fff;">Home</a> / Programs</span>
+    <h1>Our Programs</h1>
+    <p>Seven strategic priorities guiding our work: capacity building, leadership development, economic empowerment, youth education, community integration, civic engagement, and advocacy — all designed alongside the organizations we serve.</p>
+  </div>
+</header>
+
+<section class="section-pad pb-0">
+  <div class="container-xl">
+    <div class="filter-row" data-target="programs" data-aos="fade-up">
+      <button class="tab-btn active" data-filter="all">All Programs</button>
+      <button class="tab-btn" data-filter="community-development">Community Development</button>
+      <button class="tab-btn" data-filter="youth-education">Youth &amp; Education</button>
+      <button class="tab-btn" data-filter="workforce-development">Workforce Development</button>
+      <button class="tab-btn" data-filter="health-wellness">Health &amp; Wellness</button>
+      <button class="tab-btn" data-filter="civic-advocacy">Civic &amp; Advocacy</button>
+      <button class="tab-btn" data-filter="partnerships">Partnerships</button>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad pt-0" id="community-development">
+<div class="container-xl">
+<div class="row g-4" id="program-grid">
+
+<!-- COMMUNITY DEVELOPMENT -->
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="community-development" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Community Development"
+    data-title="Community Development" data-img="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop"
+    data-desc="A coordinated framework connecting families to housing, services, and neighbors, building the foundation every other RILOC program builds upon."
+    data-objectives="Strengthen local support networks; connect newcomers to essential services within their first 90 days; build durable neighbor-to-neighbor relationships."
+    data-outcomes="Faster service connection times, stronger neighborhood social ties, and reduced isolation among newly arrived families.">
+    <div class="img-wrap"><span class="tag">Community Development</span><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Community members planting a tree together"></div>
+    <div class="body"><h4>Community Development</h4><p>The foundation framework connecting new families to services, neighbors, and a sense of place.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="community-development" data-aos="fade-up" data-aos-delay="80">
+  <div class="program-card" data-program-trigger data-category="Community Development"
+    data-title="Refugee Integration" data-img="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Comprehensive resettlement support connecting new arrivals to housing, services, and neighbors who care, from day one through long-term stability."
+    data-objectives="Provide case management for the first year post-arrival; coordinate housing, healthcare, and school enrollment; pair each family with a community guide."
+    data-outcomes="90% of enrolled families secure stable housing within 60 days; measurable gains in community connectedness surveys.">
+    <div class="img-wrap"><span class="tag">Community Development</span><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Volunteers organizing donated supplies for families"></div>
+    <div class="body"><h4>Refugee Integration</h4><p>Full-circle resettlement support from arrival through long-term stability.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="community-development" data-aos="fade-up" data-aos-delay="160">
+  <div class="program-card" data-program-trigger data-category="Community Development"
+    data-title="Family Support" data-img="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Wraparound services helping households navigate school systems, childcare, parenting resources, and family stability during resettlement."
+    data-objectives="Reduce barriers to childcare and school enrollment; provide parenting workshops rooted in cultural context; connect families to emergency assistance when needed."
+    data-outcomes="Increased school enrollment rates for children and greater parental confidence navigating local systems.">
+    <div class="img-wrap"><span class="tag">Community Development</span><img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Mentor guiding a family through paperwork"></div>
+    <div class="body"><h4>Family Support</h4><p>Wraparound support for households navigating school, childcare, and daily life.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="community-development" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Community Development"
+    data-title="Housing Assistance" data-img="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Direct support finding safe, affordable housing, understanding lease agreements, and connecting to rental assistance resources."
+    data-objectives="Shorten time-to-housing for newly arrived families; provide tenant-rights education; build relationships with landlord networks."
+    data-outcomes="Reduced average placement time and fewer housing-related emergencies among enrolled households.">
+    <div class="img-wrap"><span class="tag">Community Development</span><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Hands exchanging house keys"></div>
+    <div class="body"><h4>Housing Assistance</h4><p>Direct help finding safe, affordable homes and understanding tenant rights.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="community-development" data-aos="fade-up" data-aos-delay="80">
+  <div class="program-card" data-program-trigger data-category="Community Development"
+    data-title="Leadership Development" data-img="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop"
+    data-desc="A cohort-based program preparing community members for board seats, civic roles, and organizational leadership positions."
+    data-objectives="Train 100 emerging community leaders annually; place graduates on nonprofit and civic boards; build public-speaking and governance skills."
+    data-outcomes="Growing bench of refugee and immigrant leaders serving on boards, commissions, and coalition committees.">
+    <div class="img-wrap"><span class="tag">Community Development</span><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Community leader speaking to a group"></div>
+    <div class="body"><h4>Leadership Development</h4><p>Cohort training preparing community members for boards and civic roles.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+</div></div></section>
+
+<!-- YOUTH & EDUCATION -->
+<section class="section-pad bg-tint-gray" id="youth-education">
+<div class="container-xl">
+<div class="section-head" data-aos="fade-up"><span class="eyebrow">Category</span><h2 class="mt-3">Youth &amp; Education</h2></div>
+<div class="row g-4">
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="youth-education" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Youth &amp; Education"
+    data-title="ESL Programs" data-img="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop"
+    data-desc="English language classes for all proficiency levels, taught by certified instructors with curricula tailored to adult learners."
+    data-objectives="Deliver leveled ESL classes year-round; provide childcare during class hours; connect graduates to workforce programs."
+    data-outcomes="Measurable gains in language proficiency scores and increased employment readiness among participants.">
+    <div class="img-wrap"><span class="tag">Youth &amp; Education</span><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Adults raising their hands in an ESL classroom"></div>
+    <div class="body"><h4>ESL Programs</h4><p>English classes for all proficiency levels with childcare support included.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="youth-education" data-aos="fade-up" data-aos-delay="80">
+  <div class="program-card" data-program-trigger data-category="Youth &amp; Education"
+    data-title="GED Support" data-img="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Tutoring and test preparation helping adult learners earn their high school equivalency credential."
+    data-objectives="Provide subject-matter tutoring in math, science, and language arts; cover testing fees for qualifying participants; track pass rates."
+    data-outcomes="Consistent year-over-year growth in GED completion among enrolled adult learners.">
+    <div class="img-wrap"><span class="tag">Youth &amp; Education</span><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Adult learner studying with a tutor"></div>
+    <div class="body"><h4>GED Support</h4><p>Tutoring and test prep toward a high school equivalency credential.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="youth-education" data-aos="fade-up" data-aos-delay="160">
+  <div class="program-card" data-program-trigger data-category="Youth &amp; Education"
+    data-title="Digital Literacy" data-img="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Hands-on training in computer basics, internet safety, email, and essential workplace software."
+    data-objectives="Close the digital access gap for newcomer households; provide loaner devices during training; teach job-search and online-banking skills."
+    data-outcomes="Thousands of graduates now confidently using digital tools for work, school, and daily life.">
+    <div class="img-wrap"><span class="tag">Youth &amp; Education</span><img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Instructor helping a student with a laptop"></div>
+    <div class="body"><h4>Digital Literacy</h4><p>Hands-on training in computer basics, internet safety, and workplace tools.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="youth-education" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Youth &amp; Education"
+    data-title="Youth Mentorship" data-img="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=1200&auto=format&fit=crop"
+    data-desc="One-on-one mentorship pairing newcomer youth with trained adult mentors for guidance, friendship, and academic encouragement."
+    data-objectives="Match 500 youth with mentors annually; provide monthly group activities; track school attendance and engagement."
+    data-outcomes="Improved school attendance, stronger sense of belonging, and long-term mentor relationships that often last for years.">
+    <div class="img-wrap"><span class="tag">Youth &amp; Education</span><img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Mentor talking with a young mentee"></div>
+    <div class="body"><h4>Youth Mentorship</h4><p>One-on-one mentorship pairing newcomer youth with trained adult mentors.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="youth-education" data-aos="fade-up" data-aos-delay="80">
+  <div class="program-card" data-program-trigger data-category="Youth &amp; Education"
+    data-title="Tutoring" data-img="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Free after-school academic tutoring in core subjects for K-12 students from newcomer families."
+    data-objectives="Provide weekly tutoring sessions in reading, math, and science; coordinate with schools on individual student needs; offer homework support."
+    data-outcomes="Improved grades and reading levels among participating students within one academic year.">
+    <div class="img-wrap"><span class="tag">Youth &amp; Education</span><img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Children raising their hands during a tutoring session"></div>
+    <div class="body"><h4>Tutoring</h4><p>Free after-school academic support for K-12 students in core subjects.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="youth-education" data-aos="fade-up" data-aos-delay="160">
+  <div class="program-card" data-program-trigger data-category="Youth &amp; Education"
+    data-title="College Preparation" data-img="https://images.unsplash.com/photo-1591453089816-0fbb971b454c?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Guidance through college applications, financial aid, and scholarship searches for first-generation and newcomer students."
+    data-objectives="Support students through the full application timeline; demystify FAFSA and scholarship processes; connect students with college mentors."
+    data-outcomes="Rising college acceptance and enrollment rates among program participants each graduating class.">
+    <div class="img-wrap"><span class="tag">Youth &amp; Education</span><img src="https://images.unsplash.com/photo-1591453089816-0fbb971b454c?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Student and counselor reviewing college applications"></div>
+    <div class="body"><h4>College Preparation</h4><p>Guidance through applications, financial aid, and scholarship searches.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+</div></div></section>
+
+<!-- WORKFORCE DEVELOPMENT -->
+<section class="section-pad" id="workforce-development">
+<div class="container-xl">
+<div class="section-head" data-aos="fade-up"><span class="eyebrow">Category</span><h2 class="mt-3">Workforce Development</h2></div>
+<div class="row g-4">
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="workforce-development" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Workforce Development"
+    data-title="Workforce Readiness" data-img="https://images.unsplash.com/photo-1531379410502-63bfe8cdaf6f?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Job-readiness training covering resumes, interviews, workplace culture, and job-search strategy."
+    data-objectives="Prepare 1,000+ job seekers annually; run mock interviews and resume clinics; connect graduates directly with employer partners."
+    data-outcomes="Strong job-placement rates within 90 days of program completion.">
+    <div class="img-wrap"><span class="tag">Workforce Development</span><img src="https://images.unsplash.com/photo-1531379410502-63bfe8cdaf6f?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Job seekers in a workforce readiness workshop"></div>
+    <div class="body"><h4>Workforce Readiness</h4><p>Resume building, interview prep, and job-search strategy for every skill level.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="workforce-development" data-aos="fade-up" data-aos-delay="80">
+  <div class="program-card" data-program-trigger data-category="Workforce Development"
+    data-title="Career Coaching" data-img="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Ongoing one-on-one coaching to help participants map career paths and navigate professional growth."
+    data-objectives="Provide quarterly coaching check-ins; help translate international credentials and experience; support salary negotiation skills."
+    data-outcomes="Higher retention in first jobs and clearer long-term career trajectories among coached participants.">
+    <div class="img-wrap"><span class="tag">Workforce Development</span><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Career coach meeting with a client"></div>
+    <div class="body"><h4>Career Coaching</h4><p>One-on-one coaching to map career paths and navigate professional growth.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="workforce-development" data-aos="fade-up" data-aos-delay="160">
+  <div class="program-card" data-program-trigger data-category="Workforce Development"
+    data-title="Internships" data-img="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Paid internship placements with coalition business partners, giving participants real-world experience in their field."
+    data-objectives="Place 300 interns annually across partner businesses; provide workplace mentorship during placements; track conversion to full-time roles."
+    data-outcomes="A growing share of interns converting to permanent employment with host employers.">
+    <div class="img-wrap"><span class="tag">Workforce Development</span><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Intern collaborating with a workplace team"></div>
+    <div class="body"><h4>Internships</h4><p>Paid placements with coalition business partners for real-world experience.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="workforce-development" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Workforce Development"
+    data-title="Entrepreneurship" data-img="https://images.unsplash.com/photo-1607748862156-7c548e7e98f5?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Business planning, micro-lending guidance, and mentorship for aspiring immigrant and refugee entrepreneurs."
+    data-objectives="Support 150 new small businesses annually; connect founders to micro-loans and grants; provide ongoing mentorship circles."
+    data-outcomes="Dozens of newly launched community businesses generating local jobs each year.">
+    <div class="img-wrap"><span class="tag">Workforce Development</span><img src="https://images.unsplash.com/photo-1607748862156-7c548e7e98f5?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Small business owner in her shop"></div>
+    <div class="body"><h4>Entrepreneurship</h4><p>Business planning, micro-lending guidance, and mentorship for founders.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="workforce-development" data-aos="fade-up" data-aos-delay="80">
+  <div class="program-card" data-program-trigger data-category="Workforce Development"
+    data-title="Financial Literacy" data-img="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Practical courses on budgeting, credit building, banking, and long-term savings for financial independence."
+    data-objectives="Teach budgeting and credit-building fundamentals; connect participants to mainstream banking; support first-time savings goals."
+    data-outcomes="Increased banking access and improved household budgeting confidence among graduates.">
+    <div class="img-wrap"><span class="tag">Workforce Development</span><img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Financial literacy workshop with participants reviewing budgets"></div>
+    <div class="body"><h4>Financial Literacy</h4><p>Practical courses on budgeting, credit building, and long-term savings.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="workforce-development" data-aos="fade-up" data-aos-delay="160">
+  <div class="program-card" data-program-trigger data-category="Workforce Development"
+    data-title="Certification Pathways" data-img="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Sponsored certification tracks in high-demand fields like healthcare, trades, and logistics."
+    data-objectives="Cover certification exam costs for qualifying participants; partner with technical colleges on curricula; track credential attainment."
+    data-outcomes="Hundreds of new industry credentials earned annually, opening doors to higher-wage employment.">
+    <div class="img-wrap"><span class="tag">Workforce Development</span><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Graduates celebrating a certification achievement"></div>
+    <div class="body"><h4>Certification Pathways</h4><p>Sponsored certification tracks in healthcare, trades, and logistics.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+</div></div></section>
+
+<!-- HEALTH & WELLNESS -->
+<section class="section-pad bg-tint-gray" id="health-wellness">
+<div class="container-xl">
+<div class="section-head" data-aos="fade-up"><span class="eyebrow">Category</span><h2 class="mt-3">Health &amp; Wellness</h2></div>
+<div class="row g-4">
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="health-wellness" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Health &amp; Wellness"
+    data-title="Mental Health" data-img="https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Culturally responsive counseling and peer-support groups addressing trauma, displacement stress, and adjustment challenges."
+    data-objectives="Provide free counseling in multiple languages; train peer support facilitators; reduce stigma through community education."
+    data-outcomes="Increased access to mental health support and reduced isolation among participants.">
+    <div class="img-wrap"><span class="tag">Health &amp; Wellness</span><img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Support group sitting in a circle"></div>
+    <div class="body"><h4>Mental Health</h4><p>Culturally responsive counseling and peer-support groups.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="health-wellness" data-aos="fade-up" data-aos-delay="80">
+  <div class="program-card" data-program-trigger data-category="Health &amp; Wellness"
+    data-title="Community Wellness" data-img="https://images.unsplash.com/photo-1590650046871-92c887180603?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Preventive health workshops, fitness activities, and nutrition education tailored to community traditions."
+    data-objectives="Host monthly wellness workshops; connect families to primary care providers; promote physical activity across age groups."
+    data-outcomes="Improved preventive-care engagement and healthier lifestyle habits community-wide.">
+    <div class="img-wrap"><span class="tag">Health &amp; Wellness</span><img src="https://images.unsplash.com/photo-1590650046871-92c887180603?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Healthcare worker speaking with a community member"></div>
+    <div class="body"><h4>Community Wellness</h4><p>Preventive health workshops and nutrition education for families.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="health-wellness" data-aos="fade-up" data-aos-delay="160">
+  <div class="program-card" data-program-trigger data-category="Health &amp; Wellness"
+    data-title="Women's Wellness" data-img="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Peer-led circles and health resources designed specifically for the needs of immigrant and refugee women."
+    data-objectives="Facilitate weekly women's wellness circles; connect participants to maternal and reproductive healthcare; build peer mentorship networks."
+    data-outcomes="Stronger peer support networks and improved healthcare access reported among participants.">
+    <div class="img-wrap"><span class="tag">Health &amp; Wellness</span><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Women gathered for a wellness circle"></div>
+    <div class="body"><h4>Women's Wellness</h4><p>Peer-led circles and health resources built for women's needs.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="health-wellness" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Health &amp; Wellness"
+    data-title="Health Equity" data-img="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Advocacy and navigation support ensuring equitable access to healthcare regardless of insurance status or language."
+    data-objectives="Provide healthcare navigation and interpretation support; advocate for equitable local health policy; train community health workers."
+    data-outcomes="Reduced barriers to care and expanded coverage access among historically underserved families.">
+    <div class="img-wrap"><span class="tag">Health &amp; Wellness</span><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Community health worker assisting a patient"></div>
+    <div class="body"><h4>Health Equity</h4><p>Navigation support ensuring equitable healthcare access for all.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+</div></div></section>
+
+<!-- CIVIC & ADVOCACY -->
+<section class="section-pad" id="civic-advocacy">
+<div class="container-xl">
+<div class="section-head" data-aos="fade-up"><span class="eyebrow">Category</span><h2 class="mt-3">Civic Engagement &amp; Advocacy</h2></div>
+<div class="row g-4">
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="civic-advocacy" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Civic &amp; Advocacy"
+    data-title="Civic Education" data-img="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Workshops on local government, voting rights, and civic participation for new citizens and long-term residents alike."
+    data-objectives="Host nonpartisan civic education workshops; support voter registration drives; explain local government structures."
+    data-outcomes="Higher civic participation and voter registration rates among program graduates.">
+    <div class="img-wrap"><span class="tag">Civic &amp; Advocacy</span><img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Group discussion at a civic education workshop"></div>
+    <div class="body"><h4>Civic Education</h4><p>Workshops on local government, voting rights, and civic participation.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="civic-advocacy" data-aos="fade-up" data-aos-delay="80">
+  <div class="program-card" data-program-trigger data-category="Civic &amp; Advocacy"
+    data-title="Human Rights" data-img="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Education and referral services helping community members understand and access their legal rights and protections."
+    data-objectives="Host know-your-rights trainings; maintain referral network of immigration legal partners; monitor policy developments affecting the community."
+    data-outcomes="Greater community awareness of legal protections and faster connection to trusted legal support.">
+    <div class="img-wrap"><span class="tag">Civic &amp; Advocacy</span><img src="https://images.unsplash.com/photo-1560264357-8d9202250f21?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Group listening to a know-your-rights presentation"></div>
+    <div class="body"><h4>Human Rights</h4><p>Education and referral services on legal rights and protections.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="civic-advocacy" data-aos="fade-up" data-aos-delay="160">
+  <div class="program-card" data-program-trigger data-category="Civic &amp; Advocacy"
+    data-title="Advocacy" data-img="https://images.unsplash.com/photo-1520333789090-1afc82db536a?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Coalition-led policy advocacy at the local and state level to protect and advance refugee and immigrant rights."
+    data-objectives="Mobilize community voices in policy conversations; publish policy briefs; build relationships with elected officials."
+    data-outcomes="Measurable policy wins and stronger community representation in local decision-making.">
+    <div class="img-wrap"><span class="tag">Civic &amp; Advocacy</span><img src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Advocates gathered at a community rally"></div>
+    <div class="body"><h4>Advocacy</h4><p>Coalition-led policy advocacy protecting refugee and immigrant rights.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="civic-advocacy" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Civic &amp; Advocacy"
+    data-title="Volunteer Programs" data-img="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Structured volunteer opportunities connecting community members and allies directly to program delivery."
+    data-objectives="Recruit and train 3,000+ volunteers annually; match skills to program needs; recognize volunteer milestones."
+    data-outcomes="A dependable, growing volunteer base powering nearly every RILOC program.">
+    <div class="img-wrap"><span class="tag">Civic &amp; Advocacy</span><img src="https://images.unsplash.com/photo-1548095115-45697e222360?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Volunteers working together outdoors"></div>
+    <div class="body"><h4>Volunteer Programs</h4><p>Structured opportunities connecting allies directly to program delivery.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+</div></div></section>
+
+<!-- PARTNERSHIPS -->
+<section class="section-pad bg-tint-gray" id="partnerships">
+<div class="container-xl">
+<div class="section-head" data-aos="fade-up"><span class="eyebrow">Category</span><h2 class="mt-3">Partnerships &amp; Networking</h2></div>
+<div class="row g-4">
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="partnerships" data-aos="fade-up">
+  <div class="program-card" data-program-trigger data-category="Partnerships"
+    data-title="Networking" data-img="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Community mixers and professional networking events connecting participants with employers, mentors, and each other."
+    data-objectives="Host quarterly networking events; facilitate cross-community introductions; build a shared professional directory."
+    data-outcomes="Expanded professional networks and new job leads reported by attendees.">
+    <div class="img-wrap"><span class="tag">Partnerships</span><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Professionals networking at a community event"></div>
+    <div class="body"><h4>Networking</h4><p>Community mixers connecting participants with employers and mentors.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6" data-group="programs" data-category="partnerships" data-aos="fade-up" data-aos-delay="80">
+  <div class="program-card" data-program-trigger data-category="Partnerships"
+    data-title="Partnership Development" data-img="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=1200&auto=format&fit=crop"
+    data-desc="Building formal partnerships with NGOs, businesses, government agencies, and universities to expand coalition capacity."
+    data-objectives="Grow the coalition's partner network annually; formalize shared service agreements; align funding around joint priorities."
+    data-outcomes="A larger, more resourced coalition able to serve more families each year.">
+    <div class="img-wrap"><span class="tag">Partnerships</span><img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=900&auto=format&fit=crop" loading="lazy" alt="Organizational leaders shaking hands"></div>
+    <div class="body"><h4>Partnership Development</h4><p>Formal partnerships with NGOs, businesses, government, and universities.</p><span class="more-link">View Details <i class="fa-solid fa-arrow-right"></i></span></div>
+  </div>
+</div>
+
+</div></div></section>
+
+<section class="section-pad pt-0">
+  <div class="container-xl">
+    <div class="cta-banner orange text-center" data-aos="fade-up">
+      <h3>Don't see the right starting point?</h3>
+      <p class="mb-4">Every strategic priority is a doorway. Our team can guide your organization to the right capacity-building pathway.</p>
+      <a href="contact.html" class="btn" style="background:#fff;color:var(--orange-500);">Talk to Our Team</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Program Detail Modal -->
+<div id="programModal" role="dialog" aria-modal="true" aria-label="Program details">
+  <div class="pm-panel">
+    <button class="pm-close" data-close-modal aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <img src="" alt="" class="pm-img">
+    <div class="pm-body">
+      <span class="badge-soft pm-tag"></span>
+      <h3 class="mt-3 pm-title"></h3>
+      <p class="pm-desc"></p>
+      <h6 class="mt-4 mb-2" style="color:var(--blue-900);">Objectives</h6>
+      <p class="pm-obj"></p>
+      <h6 class="mt-3 mb-2" style="color:var(--blue-900);">Expected Outcomes</h6>
+      <p class="pm-out"></p>
+      <a href="volunteer.html" class="btn btn-primary mt-3">Get Involved</a>
+    </div>
+  </div>
+</div>  
+
+<footer class="site-footer">
+  <div class="container-xl">
+    <div class="row g-5 pb-5">
+      <div class="col-lg-4">
+        <a href="index.html" class="brand mb-3" style="color:#fff;"><span class="mark"><i class="fa-solid fa-hands-holding-child"></i></span> RILOC</a>
+        <p style="max-width:340px;">A nonprofit community consortium empowering refugees, immigrants, and underserved populations through economic empowerment, advocacy, leadership development, and community integration.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2"><h6>Quick Links</h6><ul>
+        <li><a href="about.html">About Us</a></li><li><a href="programs.html">Programs</a></li>
+        <li><a href="departments.html">Departments</a></li><li><a href="impact.html">Our Impact</a></li><li><a href="news.html">News</a></li>
+      </ul></div>
+      <div class="col-6 col-lg-2"><h6>Get Involved</h6><ul>
+        <li><a href="volunteer.html">Volunteer</a></li><li><a href="partners.html">Partner With Us</a></li>
+        <li><a href="contact.html#donate">Donate</a></li><li><a href="resources.html">Resources</a></li><li><a href="contact.html">Careers</a></li>
+      </ul></div>
+      <div class="col-lg-4"><h6>Contact</h6><ul>
+        <li><i class="fa-solid fa-location-dot me-2"></i>2251 Copperstone Dr. Apt. 3B, High Point, NC 27265</li>
+        <li><i class="fa-solid fa-phone me-2"></i>+1 (336) 486-7133</li>
+        <li><i class="fa-solid fa-envelope me-2"></i>hello@riloc.org</li>
+        <li><i class="fa-solid fa-clock me-2"></i>Mon–Fri, 9:00 AM – 5:30 PM</li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Refugee &amp; Immigrant-Led Organizations Coalition. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Accessibility</a></span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
