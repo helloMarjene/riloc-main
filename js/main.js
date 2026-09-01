@@ -191,6 +191,39 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('form[data-demo-form]').forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      
+      // Check if this is a donation form
+      const customAmountField = form.querySelector('#custom-amount');
+      if (customAmountField) {
+        // This is a donation form — send via WhatsApp
+        const amount = customAmountField.value;
+        const firstName = form.querySelector('#d-first')?.value || '';
+        const lastName = form.querySelector('#d-last')?.value || '';
+        const email = form.querySelector('#d-email')?.value || '';
+        const phone = form.querySelector('#d-phone')?.value || '';
+        const isRecurring = form.querySelector('#d-recurring')?.checked ? 'Yes' : 'No';
+        const isInMemory = form.querySelector('#d-honor')?.checked ? 'Yes' : 'No';
+        
+        // Create WhatsApp message
+        const message = `*RILOC Donation Notification*\n\n` +
+          `*Donor Information:*\n` +
+          `Name: ${firstName} ${lastName}\n` +
+          `Email: ${email}\n` +
+          `Phone: ${phone}\n\n` +
+          `*Donation Details:*\n` +
+          `Amount: $${amount} USD\n` +
+          `Recurring: ${isRecurring}\n` +
+          `In Honor/Memory: ${isInMemory}\n\n` +
+          `*Message:*\n` +
+          `A new donation has been received!`;
+        
+        // WhatsApp API link (phone: +1 336 486 7133 formatted as 13364867133)
+        const whatsappUrl = `https://wa.me/13364867133?text=${encodeURIComponent(message)}`;
+        
+        // Open WhatsApp in new tab
+        window.open(whatsappUrl, '_blank');
+      }
+      
       const note = form.querySelector('.form-success');
       if (note) {
         note.style.display = 'flex';
